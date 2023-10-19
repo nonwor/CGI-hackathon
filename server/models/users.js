@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Schema } = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema(
     morethan18: { type: Boolean, required: true },
     highschool: { type: Boolean, required: true },
     commitment: { type: Boolean, required: true },
+    contactedBy: { type: Schema.Types.ObjectId, default: false, ref: "Admin" },
   },
   {
     timestamps: true,
