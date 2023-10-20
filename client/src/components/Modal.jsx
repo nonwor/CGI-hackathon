@@ -102,6 +102,7 @@ export default function Modal() {
             className="slider8"
           ></input>
         </div>
+        <input type="submit" value="Submit" className="questionsubmit" />
       </div>
     </div>
   );
