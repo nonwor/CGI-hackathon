@@ -1,0 +1,82 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto 0 auto;
+  max-width: 50vw;
+  background-color: hsl(203, 86%, 26%);
+  border-radius: 2rem;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: white;
+}
+
+.questions {
+  padding: 0 2rem 2rem 2rem;
+  color: white;
+  line-height: 20px;
+}
+li {
+  list-style-type: none;
+  width: 80%;
+}
+
+.question1,
+.question2,
+.question3,
+.question4,
+.question5,
+.question6,
+.question7,
+.question8 {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.range-slider-value {
+  color: #fff;
+  width: 20px;
+  text-align: center;
+  border-radius: 30px;
+  background: #2c3e50;
+  padding: 15px 10px;
+}
+
+.questionsubmit {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.modalcourse {
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.close {
+  color: white;
+  font-size: 2rem;
+}
+.close:hover {
+  cursor: pointer;
+}
+
+.courseImg {
+  display: block;
+  margin: 0 auto 0 auto;
+  width: 50%;
+}
+
+p {
+  text-align: center;
+  color: white;
+}
