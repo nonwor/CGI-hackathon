@@ -1,7 +1,8 @@
 import React from 'react'
 import Square from './Square'
 
-import QuizOne from './QuizOne'
+// Load quiz
+import Modal from '../Modal/Modal'
 
 class Grid extends React.Component {
 
@@ -56,17 +57,18 @@ class Grid extends React.Component {
     }
 
     // This this where we detect collison Quiz 1
-    console.log(this.state.selectedSquare)
-    if(this.state.selectedSquare[0]==4 & this.state.selectedSquare[1]==2){
+    // console.log(this.state.selectedSquare)
+    if(this.state.selectedSquare[0]==1 & this.state.selectedSquare[1]==3){
       console.log("We need pop up for qualifying info")
-
       this.setState({firstModal_show: true})
+      console.log(this.state.firstModal_show)
     } else {
       this.setState({firstModal_show: false})
+      console.log(this.state.firstModal_show)
     }
 
     // This this where we detect collison Quiz 2
-    if(this.state.selectedSquare[0]==1 & this.state.selectedSquare[1]==3){
+    if(this.state.selectedSquare[0]==4 & this.state.selectedSquare[1]==2){
       console.log("We need pop up for qualifying info")
       
     } else {
@@ -87,14 +89,18 @@ class Grid extends React.Component {
   }
 
   render() {
+    
+    if(this.state.firstModal_show == true){
+      console.log("Render Modal")
+      return (
+        <div>
+          <Modal/>
+        </div>
+      )
+    }
 
     return (
       <div>
-        <QuizOne
-          isOpen={this.state.firstModal_show}
-          onClose={() => this.setState({ firstModal_show: false })}
-          onSave={this.handleSaveUser}
-        />
         
         <div className="grid-box"
            style={{"width": this.props.gridWidth * 150, "height": this.props.gridWidth * 150}}>
