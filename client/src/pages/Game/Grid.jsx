@@ -2,7 +2,7 @@ import React from 'react'
 import Square from './Square'
 
 // Load quiz
-import Modal from '../Modal/Modal'
+import Questions from '../Questions/Questions'
 
 class Grid extends React.Component {
 
@@ -91,10 +91,10 @@ class Grid extends React.Component {
   render() {
     
     if(this.state.firstModal_show == true){
-      console.log("Render Modal")
+      console.log("Render Questions")
       return (
         <div>
-          <Modal/>
+          <Questions/>
         </div>
       )
     }
