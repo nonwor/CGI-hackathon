@@ -30,7 +30,9 @@ export default function Modal() {
           <div>Display SWE Course</div>
         ) : biggestNum === sumData ? (
           <div>Display Data Course</div>
-        ) : null}
+        ) : (
+          <div>An error occured, please try again</div>
+        )}
       </>
     );
   };

@@ -1,14 +1,14 @@
 import "./App.css";
 import NavBar from "./components/Navbar.jsx";
 import Home from "./pages/Home/Home.jsx";
-import Modal from "./components/Modal";
+import Modal from "./pages/Modal/Modal";
 
 const App = () => {
   return (
     <div className="app">
-      <Modal />
-      {/* <NavBar />
-      <Home /> */}
+      {/* <Modal /> */}
+      <NavBar />
+      <Home />
     </div>
   );
 };
