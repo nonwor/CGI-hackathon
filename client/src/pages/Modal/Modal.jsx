@@ -12,7 +12,7 @@ export default function Modal() {
   const [value7, setValue7] = useState(5); // SWE
   const [value8, setValue8] = useState(5); // DATA
 
-  const sumValues = (e) => {
+  const submitValue = (e) => {
     e.preventDefault();
     let sumIT = +value1 + +value5;
     let sumCyber = +value2 + +value6;
@@ -44,7 +44,7 @@ export default function Modal() {
         Rate the questions from 1-10 with 1 being not really interested and 10
         being extremely interested
       </h2>
-      <form onSubmit={sumValues}>
+      <form onSubmit={submitValue}>
         <div className="questions">
           <div className="question1">
             <li>Do you enjoy working on hands-on products?</li>
