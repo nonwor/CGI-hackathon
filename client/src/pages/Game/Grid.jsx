@@ -2,6 +2,7 @@ import React from 'react'
 import Square from './Square'
 
 // Load quiz
+
 import Questions from '../Questions/Questions'
 
 class Grid extends React.Component {
