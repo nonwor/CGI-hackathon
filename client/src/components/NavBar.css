@@ -5,7 +5,7 @@
     overflow: hidden;
     align-items: center;
     height: 40px;
-    background-color: #213245;
+    background-color: rgb(9, 80, 124);
 }
 
 .nav-bar a {
