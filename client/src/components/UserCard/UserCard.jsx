@@ -1,19 +1,17 @@
 import React from 'react'
 import "./UserCard.css"
 
-function UserCard() {
+function UserCard({ userResponse }) {
   return (
     <div className='card-container'>
         <div className="card-header">
-            Full Name
+            {userResponse.name}
         </div>
         <div className='card-content'>
-            <p>email</p>
-            <p>age</p>
-            <div className='progress-bar'>
-                100%
-            </div>
-            <button>remove</button>
+            {userResponse.email}
+        </div>
+        <div className='recommendedCourse'>
+            {userResponse.recommendedCourse}
         </div>
     </div>
   )

@@ -6,13 +6,9 @@ export const PrimaryContext = createContext()
 
 const PrimaryContextProvider = (props) => {
 
-    const [adminCredentials, setAdminCredentials] = useState({
-        email: "",
-        password: ""
-    });
+    const [adminCredentials, setAdminCredentials] = useState({});
 
-
-    const [isAdmin, setIsAdmin]= useState(true);
+    const [isAdmin, setIsAdmin]= useState(false);
 
     return (
         <PrimaryContext.Provider

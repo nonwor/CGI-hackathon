@@ -1,0 +1,14 @@
+{
+  "title": "eligibilityQuestionaire",
+  "questions": {
+    "question1": true,
+    "question2": false,
+    "question3": true,
+    "question4": false,
+    "question5": true,
+    "question6": false,
+    "question7": true,
+    "question8": false
+  }
+}
+
