@@ -1,22 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { PrimaryContext } from "../../components/context/PrimaryContext";
+import { useNavigate } from 'react-router-dom';
+import Admin from "../Admin/Admin";
+import axios from 'axios';
 
 import "./Home.css"
+import path from "path";
 
 function Home() {
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    userName: "",
+    password: ""
+  })
+  const {setAdminCredentials, adminCredentials, setIsAdmin} = useContext(PrimaryContext);
 
-  const {setAdminCredentials, adminCredentials} = useContext(PrimaryContext);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(adminCredentials);
-    // axios request to get admin
+    console.log(formData);
+    
+    const adminUser = await axios({
+      method: 'POST',
+      url: 'http://localhost:3000/admins/login',
+      data: formData
+    })
+    console.log(adminUser.data)
+    setAdminCredentials(adminUser.data)    
+    setIsAdmin(true)
+    navigate('/Admin')
   }
 
   const handleInputChange = (e) => {
-    setAdminCredentials({
-      ...adminCredentials,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value,
     });
   };
 
@@ -24,27 +42,31 @@ function Home() {
     <div className="landind-display">
 
         <section className="learner-section">
-            <button>Welcome Learner</button>
-
+            <button
+              onClick={() => {
+                navigate('/game')
+              }}
+            >
+              Welcome Learner
+            </button>
         </section>
 
         <section className="admin-section">
-
           <form onSubmit={handleSubmit} action="submit" className="admin-login-form">
             <label>Login</label>
             <input 
-            onChange={handleInputChange} 
-            type="email" 
-            name="email" 
-            placeholder="email"
+              onChange={handleInputChange} 
+              type="userName" 
+              name="userName" 
+              placeholder="userName"
             />
             <input 
-            onChange={handleInputChange} 
-            type="password" 
-            name="password" 
-            placeholder="password"
+              onChange={handleInputChange} 
+              type="password" 
+              name="password" 
+              placeholder="password"
             />
-            <button>Login</button>
+            <button onClick={handleSubmit}>Login</button>
           </form>
         </section>
 

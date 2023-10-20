@@ -1,23 +1,37 @@
 const express = require("express");
-const cors = require("cors");
 const app = express();
-app.use(express.json());
-app.use(cors());
-require("dotenv").config();
+const cors = require("cors");
+
+
 const PORT = process.env.PORT || 3000;
 
-const ConnectoDB = require("./config/db");
+app.use(express.json());
+app.use(cors());
 
-ConnectoDB();
+// Connect to DB
+const connectToDB = require("./config/db");
+// connectToDB();
+
+
+app.use("/admins", require("./routes/adminRoutes"));
+
+app.use("/userResponses", require("./routes/userResponses"));
 
 app.get("*", (req, res) => {
   res.send("You have reached the catch all route!");
 });
 
-app.use("/users", require("./routes/userRoutes"));
 
-app.use("/admins", require("./routes/adminRoutes"));
+// app.listen(PORT, () => {
+//   console.log(`App listening on port ${PORT}`);
+// });
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
+connectToDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`App listening on port ${PORT}`);
+          });
+    })
+    .catch(() => {
+        console.log('error starting server')
+    })

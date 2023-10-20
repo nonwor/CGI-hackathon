@@ -1,16 +1,19 @@
 const mongoose = require("mongoose");
 
 const adminSchema = new mongoose.Schema({
-  firstName: { type: String, required: true, trim: true },
-  lastName: { type: String, required: true, trim: true },
-  email: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true,
-    match: /.+@.+\.\w+/,
-  },
-  password: { type: String, required: true, minLength: 3 },
+  userName: { type: String, required: true },
+  password: { type: String, required: true }
+},
+{
+  timestamps: true,
+  toJSON: {
+    transform: (doc, ret) => {
+      // Remove the 'password' field from the JSON representation
+      delete ret.password;
+    }
+  }
 });
 
-module.exports = mongoose.model("Admin", adminSchema);
+const Admin = mongoose.model("Admin", adminSchema);
+
+module.exports = Admin;

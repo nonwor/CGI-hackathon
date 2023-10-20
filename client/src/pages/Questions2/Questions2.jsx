@@ -1,9 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React, {useContext, useState} from "react";
+import { PrimaryContext } from "../../components/context/PrimaryContext";
 
 
 export default function Questions2() {
 
+    const { setUserResponsesForm } = useContext(PrimaryContext);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -26,6 +27,10 @@ export default function Questions2() {
         e.preventDefault();
         console.log('Form Data:', formData);
         // Add logic to handle form submission
+        // send data to db
+        //exit the modal
+        setUserResponsesForm(formData)
+        // window.location.reload();
       };
     
       return (
