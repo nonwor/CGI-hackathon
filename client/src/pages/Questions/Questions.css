@@ -130,3 +130,7 @@ p {
 .close {
   color: black;
 }
+
+.courseCheck {
+  margin: 24px 0;
+}
