@@ -2,7 +2,8 @@ import React from 'react'
 import Square from './Square'
 
 // Load quiz
-import Modal from '../Modal/Modal'
+import Modal from '../Modal/Modal' 
+import Modal2 from '../Questions2/Questions2'
 
 class Grid extends React.Component {
 
@@ -60,19 +61,21 @@ class Grid extends React.Component {
     // console.log(this.state.selectedSquare)
     if(this.state.selectedSquare[0]==1 & this.state.selectedSquare[1]==3){
       console.log("We need pop up for qualifying info")
-      this.setState({firstModal_show: true})
-      console.log(this.state.firstModal_show)
+      this.setState({secondModal_show: true})
+      // console.log(this.state.firstModal_show)
     } else {
-      this.setState({firstModal_show: false})
-      console.log(this.state.firstModal_show)
+      this.setState({secondModal_show: false})
+      // console.log(this.state.firstModal_show)
     }
 
     // This this where we detect collison Quiz 2
     if(this.state.selectedSquare[0]==4 & this.state.selectedSquare[1]==2){
       console.log("We need pop up for qualifying info")
-      
+      this.setState({firstModal_show: true})
+      // console.log(this.state.firstModal_show)
     } else {
-      
+      this.setState({firstModal_show: false})
+      // console.log(this.state.firstModal_show)
     }
 
     this.setState({
@@ -89,8 +92,17 @@ class Grid extends React.Component {
   }
 
   render() {
-    
+
     if(this.state.firstModal_show == true){
+      console.log("Render Modal")
+      return (
+        <div>
+          <Question2/>
+        </div>
+      )
+    }
+
+    if(this.state.secondModal_show == true){
       console.log("Render Modal")
       return (
         <div>
