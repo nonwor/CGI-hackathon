@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-
 export default function Questions2() {
 
     const [formData, setFormData] = useState({
@@ -26,6 +25,9 @@ export default function Questions2() {
         e.preventDefault();
         console.log('Form Data:', formData);
         // Add logic to handle form submission
+        // send data to db
+        //exit the modal
+        window.location.reload();
       };
     
       return (
