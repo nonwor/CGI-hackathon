@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { PrimaryContext } from "../../components/context/PrimaryContext";
 import axios from "axios";
 import "./Questions.css";
+
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 
