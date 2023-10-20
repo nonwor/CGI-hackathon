@@ -10,7 +10,7 @@
 h1,
 h2 {
   text-align: center;
-  color: white;
+  color: black;
 }
 
 .questions {
@@ -94,11 +94,12 @@ li {
 }
 
 .modalcourse {
-  background-color: black;
+  background-color: #add8e6;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 10px;
 }
 
 .close {
@@ -111,11 +112,21 @@ li {
 
 .courseImg {
   display: block;
-  margin: 0 auto 0 auto;
+  margin: 5px auto;
   width: 50%;
+  border-radius: 70%;
 }
 
 p {
   text-align: center;
   color: white;
+}
+
+.recCourse {
+  width: 50%;
+  margin: auto;
+}
+
+.close {
+  color: black;
 }

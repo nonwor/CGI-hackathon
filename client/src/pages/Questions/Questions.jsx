@@ -35,7 +35,9 @@ export default function Questions() {
           <span className="close" onClick={closeModal}>
             &times;
           </span>
-          <h2>We think the best course to sign up for would be {course}</h2>
+          <h2 className="recCourse">
+            We think the best course to sign up for would be {course}
+          </h2>
           <img src={image} alt={course} className="courseImg" />
           <p>
             Check our course{" "}
