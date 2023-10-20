@@ -2,8 +2,7 @@ import React from 'react'
 import Square from './Square'
 
 // Load quiz
-import Modal from '../Modal/Modal' 
-import Modal2 from '../Questions2/Questions2'
+import Questions from '../Questions/Questions'
 
 class Grid extends React.Component {
 
@@ -97,16 +96,7 @@ class Grid extends React.Component {
       console.log("Render Modal")
       return (
         <div>
-          <Question2/>
-        </div>
-      )
-    }
-
-    if(this.state.secondModal_show == true){
-      console.log("Render Modal")
-      return (
-        <div>
-          <Modal/>
+          <Questions/>
         </div>
       )
     }

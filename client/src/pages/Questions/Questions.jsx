@@ -1,8 +1,8 @@
 import React from "react";
-import "./Modal.css";
+import "./Questions.css";
 import { useState } from "react";
 
-export default function Modal() {
+export default function Questions() {
   const [value1, setValue1] = useState(5); // IT
   const [value2, setValue2] = useState(5); // CYBER
   const [value3, setValue3] = useState(5); // DATA
@@ -11,30 +11,59 @@ export default function Modal() {
   const [value6, setValue6] = useState(5); // CYBER
   const [value7, setValue7] = useState(5); // SWE
   const [value8, setValue8] = useState(5); // DATA
+  const [sumVal, setSumVal] = useState([0, 0, 0, 0]);
+
+  let [showModal, setShowModal] = useState(false);
+
+  const biggestNum = Math.max(...sumVal);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const ModalContent = ({ image, course, link }) => {
+    return (
+      <div className="modalcourse">
+        <div className="modal-content">
+          <span className="close" onClick={closeModal}>
+            &times;
+          </span>
+          <h2>We think the best course to sign up for would be {course}</h2>
+          <img src={image} alt={course} className="courseImg" />
+          <p>
+            Check our course{" "}
+            <a href={link} className="link">
+              HERE
+            </a>
+          </p>
+        </div>
+      </div>
+    );
+  };
+
+  const updateSumVal = () => {
+    setSumVal([
+      +value1 + +value5,
+      +value2 + +value6,
+      +value4 + +value7,
+      +value3 + +value8,
+    ]);
+  };
 
   const submitValue = (e) => {
     e.preventDefault();
-    let sumIT = +value1 + +value5;
-    let sumCyber = +value2 + +value6;
-    let sumSWE = +value4 + +value7;
-    let sumData = +value3 + +value8;
-    const biggestNum = Math.max(sumIT, sumCyber, sumSWE, sumData);
+
+    // IT, CYBER, SWE, DATA
+
+    updateSumVal();
+
     // find the biggest number and see which course it correlates to
-    return (
-      <>
-        {biggestNum === sumIT ? (
-          <div>Display IT Course</div>
-        ) : biggestNum === sumCyber ? (
-          <div>Display Cyber Course</div>
-        ) : biggestNum === sumSWE ? (
-          <div>Display SWE Course</div>
-        ) : biggestNum === sumData ? (
-          <div>Display Data Course</div>
-        ) : (
-          <div>An error occured, please try again</div>
-        )}
-      </>
-    );
+
+    openModal();
   };
 
   return (
@@ -182,9 +211,44 @@ export default function Modal() {
             <span className="range-slider-value">{value8}</span>
           </div>
           <hr />
-          <input type="submit" value="Submit" className="questionsubmit" />
+          <input
+            type="submit"
+            value="Submit"
+            className="questionsubmit"
+            onClick={() => {
+              console.log(sumVal);
+            }}
+          />
         </div>
       </form>
+
+      {biggestNum === sumVal[0] && showModal ? (
+        <ModalContent
+          image="/src/assets/it.jpg"
+          course="IT"
+          link="https://perscholas.org/courses/it-support/it-support-atlanta/"
+        />
+      ) : biggestNum === sumVal[1] && showModal ? (
+        <ModalContent
+          image="/src/assets/csec.jpg"
+          course="Cyber Security"
+          link="https://perscholas.org/courses/cybersecurity/cybersecurity-atlanta/"
+        />
+      ) : biggestNum === sumVal[2] && showModal ? (
+        <ModalContent
+          image="/src/assets/swe.jpg"
+          course="Software Engineering"
+          link="https://perscholas.org/courses/software-engineer/software-engineer-atlanta/"
+        />
+      ) : biggestNum === sumVal[3] && showModal ? (
+        <ModalContent
+          image="/src/assets/dataengineer.jpg"
+          course="Data Engineering"
+          link="https://perscholas.org/courses/data-analytics-powered-by-cgi/tennessee/"
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
