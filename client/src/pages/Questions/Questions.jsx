@@ -1,6 +1,8 @@
 import React from "react";
 import "./Questions.css";
 import { useState } from "react";
+import Slider from "@mui/material/Slider";
+import Box from "@mui/material/Box";
 
 export default function Questions() {
   const [value1, setValue1] = useState(5); // IT
@@ -80,32 +82,36 @@ export default function Questions() {
         <div className="questions">
           <div className="question1">
             <li>Do you enjoy working on hands-on products?</li>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              className="slider1"
-              value={value1}
-              onChange={(e) => {
-                setValue1(e.target.value);
-              }}
-            ></input>
-            <span className="range-slider-value">{value1}</span>
+            <Box sx={{ width: "60%" }}>
+              <Slider
+                value={value1}
+                step={1}
+                marks
+                min={1}
+                max={10}
+                valueLabelDisplay="auto"
+                onChange={(e) => {
+                  setValue1(e.target.value);
+                }}
+              />
+            </Box>
           </div>
-          <hr />
+
           <div className="question2">
             <li>How important is privacy to you?</li>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              className="slider2"
-              value={value2}
-              onChange={(e) => {
-                setValue2(e.target.value);
-              }}
-            ></input>
-            <span className="range-slider-value">{value2}</span>
+            <Box sx={{ width: "60%" }}>
+              <Slider
+                value={value2}
+                step={1}
+                marks
+                min={1}
+                max={10}
+                valueLabelDisplay="auto"
+                onChange={(e) => {
+                  setValue2(e.target.value);
+                }}
+              />
+            </Box>
           </div>
           <hr />
           <div className="question3">
@@ -113,17 +119,19 @@ export default function Questions() {
               How frequently do you explore alternative or potentially simpler
               approaches after resolving a problem?
             </li>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              className="slider3"
-              value={value3}
-              onChange={(e) => {
-                setValue3(e.target.value);
-              }}
-            ></input>
-            <span className="range-slider-value">{value3}</span>
+            <Box sx={{ width: "60%" }}>
+              <Slider
+                value={value3}
+                step={1}
+                marks
+                min={1}
+                max={10}
+                valueLabelDisplay="auto"
+                onChange={(e) => {
+                  setValue3(e.target.value);
+                }}
+              />
+            </Box>
           </div>
           <hr />
           <div className="question4">
@@ -131,17 +139,19 @@ export default function Questions() {
               Do you handle and respond to feedback and constructive criticism
               well?
             </li>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              className="slider4"
-              value={value4}
-              onChange={(e) => {
-                setValue4(e.target.value);
-              }}
-            ></input>
-            <span className="range-slider-value">{value4}</span>
+            <Box sx={{ width: "60%" }}>
+              <Slider
+                value={value4}
+                step={1}
+                marks
+                min={1}
+                max={10}
+                valueLabelDisplay="auto"
+                onChange={(e) => {
+                  setValue4(e.target.value);
+                }}
+              />
+            </Box>
           </div>
           <hr />
           <div className="question5">
@@ -150,17 +160,19 @@ export default function Questions() {
               confident are you in your ability to convey that knowledge to
               someone entirely new to the topic?
             </li>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              className="slider5"
-              value={value5}
-              onChange={(e) => {
-                setValue5(e.target.value);
-              }}
-            ></input>
-            <span className="range-slider-value">{value5}</span>
+            <Box sx={{ width: "60%" }}>
+              <Slider
+                value={value5}
+                step={1}
+                marks
+                min={1}
+                max={10}
+                valueLabelDisplay="auto"
+                onChange={(e) => {
+                  setValue5(e.target.value);
+                }}
+              />
+            </Box>
           </div>
           <hr />
           <div className="question6">
@@ -168,17 +180,19 @@ export default function Questions() {
               How interested are you in exploring ethical hacking and privacy
               regulations?
             </li>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              className="slider6"
-              value={value6}
-              onChange={(e) => {
-                setValue6(e.target.value);
-              }}
-            ></input>
-            <span className="range-slider-value">{value6}</span>
+            <Box sx={{ width: "60%" }}>
+              <Slider
+                value={value6}
+                step={1}
+                marks
+                min={1}
+                max={10}
+                valueLabelDisplay="auto"
+                onChange={(e) => {
+                  setValue6(e.target.value);
+                }}
+              />
+            </Box>
           </div>
           <hr />
           <div className="question7">
@@ -186,34 +200,38 @@ export default function Questions() {
               How determined would you be to find a solution if you encountered
               a problem that seemed unsolvable?
             </li>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              className="slider7"
-              value={value7}
-              onChange={(e) => {
-                setValue7(e.target.value);
-              }}
-            ></input>
-            <span className="range-slider-value">{value7}</span>
+            <Box sx={{ width: "60%" }}>
+              <Slider
+                value={value7}
+                step={1}
+                marks
+                min={1}
+                max={10}
+                valueLabelDisplay="auto"
+                onChange={(e) => {
+                  setValue7(e.target.value);
+                }}
+              />
+            </Box>
           </div>
           <hr />
           <div className="question8">
             <li>Do you enjoy organizing and maintaining things?</li>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              className="slider8"
-              value={value8}
-              onChange={(e) => {
-                setValue8(e.target.value);
-              }}
-            ></input>
-            <span className="range-slider-value">{value8}</span>
+            <Box sx={{ width: "60%" }}>
+              <Slider
+                value={value8}
+                step={1}
+                marks
+                min={1}
+                max={10}
+                valueLabelDisplay="auto"
+                onChange={(e) => {
+                  setValue8(e.target.value);
+                }}
+              />
+            </Box>
           </div>
-          <hr />
+
           <input
             type="submit"
             value="Submit"
