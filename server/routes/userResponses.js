@@ -1,12 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const UserResponse = require('../models/userResponses');
+const { verifyAdmin } = require('../middleware/index')
 
 // Get all user responses with optional limit
-router.get('/', async (req, res) => {
+router.get('/', verifyAdmin, async (req, res) => {
   try {
-    const limit = parseInt(req.query.limit) || 10;
+    if (!req.admin) {
+      return res.status(401).json({ error: 'Unauthorized: User is not an admin' });
+    }
 
+    const limit = parseInt(req.query.limit) || 10;
     const userResponses = await UserResponse.find({}).limit(limit);
 
     res.json(userResponses);
@@ -15,7 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Create a new user response
+// Create a new user-response
 router.post('/', async (req, res) => {
   try {
     const { assessments } = req.body;

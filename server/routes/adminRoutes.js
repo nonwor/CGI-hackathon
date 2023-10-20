@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const Admin = require('../models/admins');
 
-
+// Register an admin user
 router.post('/register', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -19,6 +19,7 @@ router.post('/register', async (req, res) => {
 });
 
 
+// Login an admin user
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
