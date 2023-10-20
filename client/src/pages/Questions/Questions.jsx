@@ -11,8 +11,11 @@ export default function Questions() {
   const [value6, setValue6] = useState(5); // CYBER
   const [value7, setValue7] = useState(5); // SWE
   const [value8, setValue8] = useState(5); // DATA
+  const [sumVal, setSumVal] = useState([0, 0, 0, 0]);
 
   let [showModal, setShowModal] = useState(false);
+
+  const biggestNum = Math.max(...sumVal);
 
   const openModal = () => {
     setShowModal(true);
@@ -22,7 +25,7 @@ export default function Questions() {
     setShowModal(false);
   };
 
-  const ModalContent = (image, course) => {
+  const ModalContent = ({ image, course }) => {
     return (
       <div className="modalcourse">
         <div className="modal-content">
@@ -36,33 +39,25 @@ export default function Questions() {
     );
   };
 
+  const updateSumVal = () => {
+    setSumVal([
+      +value1 + +value5,
+      +value2 + +value6,
+      +value4 + +value7,
+      +value3 + +value8,
+    ]);
+  };
+
   const submitValue = (e) => {
     e.preventDefault();
-    let sumIT = +value1 + +value5;
-    let sumCyber = +value2 + +value6;
-    let sumSWE = +value4 + +value7;
-    let sumData = +value3 + +value8;
-    const biggestNum = Math.max(sumIT, sumCyber, sumSWE, sumData);
+
+    // IT, CYBER, SWE, DATA
+
+    updateSumVal();
+
     // find the biggest number and see which course it correlates to
 
     openModal();
-
-    console.log(showModal, biggestNum === sumIT);
-    return (
-      <>
-        {biggestNum === sumIT && showModal ? (
-          <ModalContent image="../assets/it.jpg" course="IT" />
-        ) : biggestNum === sumCyber && showModal ? (
-          <div>Display Cyber Course</div>
-        ) : biggestNum === sumSWE && showModal ? (
-          <div>Display SWE Course</div>
-        ) : biggestNum === sumData && showModal ? (
-          <div>Display Data Course</div>
-        ) : (
-          <div>An error occured, please try again</div>
-        )}
-      </>
-    );
   };
 
   return (
@@ -214,10 +209,30 @@ export default function Questions() {
             type="submit"
             value="Submit"
             className="questionsubmit"
-            onClick={openModal}
+            onClick={() => {
+              console.log(sumVal);
+            }}
           />
         </div>
       </form>
+
+      {biggestNum === sumVal[0] && showModal ? (
+        <ModalContent image="/src/assets/it.jpg" course="IT" />
+      ) : biggestNum === sumVal[1] && showModal ? (
+        <ModalContent image="/src/assets/csec.jpg" course="Cyber Security" />
+      ) : biggestNum === sumVal[2] && showModal ? (
+        <ModalContent
+          image="/src/assets/swe.jpg"
+          course="Software Engineering"
+        />
+      ) : biggestNum === sumVal[3] && showModal ? (
+        <ModalContent
+          image="/src/assets/dataengineer.jpg"
+          course="Data Engineering"
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
