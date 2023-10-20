@@ -1,6 +1,6 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { PrimaryContext } from "../../components/context/PrimaryContext";
-import axios from 'axios';
+import axios from "axios";
 import "./Questions.css";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
@@ -20,7 +20,8 @@ export default function Questions() {
 
   let [showModal, setShowModal] = useState(false);
 
-  const {userResponsesForm, setUserResponsesForm} = useContext(PrimaryContext);
+  const { userResponsesForm, setUserResponsesForm } =
+    useContext(PrimaryContext);
 
   const biggestNum = Math.max(...sumVal);
 
@@ -33,9 +34,11 @@ export default function Questions() {
   };
 
   const submitResponses = async () => {
- 
-    if (userResponsesForm.name.length < 1 || userResponsesForm.email.length < 5) {
-      window.alert('you need to complete the other questionare')
+    if (
+      userResponsesForm.name.length < 1 ||
+      userResponsesForm.email.length < 5
+    ) {
+      window.alert("you need to complete the other questionare");
     } else {
       // setUserResponsesForm({
       //   ...userResponsesForm,
@@ -44,24 +47,23 @@ export default function Questions() {
 
       const userResponsesWithRec = {
         ...userResponsesForm,
-        recommendedCourse: recCourse
-      }
+        recommendedCourse: recCourse,
+      };
 
-      console.log(userResponsesWithRec)
+      console.log(userResponsesWithRec);
       const response = axios({
-        method: 'POST',
-        url: 'http://localhost:3000/userResponses',
-        data: userResponsesWithRec
-      })
-  
-      console.log(response.data)
-      setUserResponsesForm({})
-    }
+        method: "POST",
+        url: "http://localhost:3000/userResponses",
+        data: userResponsesWithRec,
+      });
 
-  }
+      console.log(response.data);
+      setUserResponsesForm({});
+    }
+  };
 
   const ModalContent = ({ image, course, link }) => {
-    setRecCourse(course)
+    setRecCourse(course);
     return (
       <div className="modalcourse">
         <div className="modal-content">
@@ -72,8 +74,10 @@ export default function Questions() {
             We think the best course to sign up for would be {course}
           </h2>
           <img src={image} alt={course} className="courseImg" />
-          <button onClick={submitResponses}>Submit form</button>
-          <p>
+          <button onClick={submitResponses} className="questionsubmit">
+            Submit form
+          </button>
+          <p className="courseCheck">
             Check our course{" "}
             <a href={link} className="link" target="_blank" rel="noreferrer">
               HERE
@@ -132,7 +136,7 @@ export default function Questions() {
               />
             </Box>
           </div>
-
+          <hr />
           <div className="question2">
             <li>How important is privacy to you?</li>
             <Box sx={{ width: "60%" }}>
