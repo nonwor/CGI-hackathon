@@ -89,3 +89,7 @@
     border-radius: 13px;
     z-index: 1;
   }
+
+  li{
+    padding: 0;
+  }
