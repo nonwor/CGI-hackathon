@@ -10,13 +10,26 @@ const PrimaryContextProvider = (props) => {
 
     const [isAdmin, setIsAdmin]= useState(false);
 
+    const [userResponsesForm, setUserResponsesForm] = useState({
+        name: '',
+        email: '',
+        question1: '',
+        question2: '',
+        question3: '',
+        question4: '',
+        question5: '',
+        recommendedCourse: ''
+    })
+
     return (
         <PrimaryContext.Provider
             value={{
                 setIsAdmin, 
                 isAdmin,
                 setAdminCredentials, 
-                adminCredentials
+                adminCredentials,
+                userResponsesForm,
+                setUserResponsesForm
             }}>
             {props.children}
         </PrimaryContext.Provider>

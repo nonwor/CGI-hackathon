@@ -42,7 +42,13 @@ function Home() {
     <div className="landind-display">
 
         <section className="learner-section">
-            <button>Welcome Learner</button>
+            <button
+              onClick={() => {
+                navigate('/game')
+              }}
+            >
+              Welcome Learner
+            </button>
         </section>
 
         <section className="admin-section">

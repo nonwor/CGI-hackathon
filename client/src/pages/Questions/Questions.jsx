@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState, useContext} from "react";
+import { PrimaryContext } from "../../components/context/PrimaryContext";
+import axios from 'axios';
 import "./Questions.css";
-import { useState } from "react";
+
 
 export default function Questions() {
   const [value1, setValue1] = useState(5); // IT
@@ -13,8 +15,11 @@ export default function Questions() {
   const [value8, setValue8] = useState(5); // DATA
   const [sumVal, setSumVal] = useState([0, 0, 0, 0]);
   const [disabled, setDisabled] = useState(false);
+  const [recCourse, setRecCourse] = useState("");
 
   let [showModal, setShowModal] = useState(false);
+
+  const {userResponsesForm, setUserResponsesForm} = useContext(PrimaryContext);
 
   const biggestNum = Math.max(...sumVal);
 
@@ -26,7 +31,36 @@ export default function Questions() {
     setShowModal(false);
   };
 
+  const submitResponses = async () => {
+ 
+    if (userResponsesForm.name.length < 1 || userResponsesForm.email.length < 5) {
+      window.alert('you need to complete the other questionare')
+    } else {
+      // setUserResponsesForm({
+      //   ...userResponsesForm,
+      //   recommendedCourse: recCourse
+      // })
+
+      const userResponsesWithRec = {
+        ...userResponsesForm,
+        recommendedCourse: recCourse
+      }
+
+      console.log(userResponsesWithRec)
+      const response = axios({
+        method: 'POST',
+        url: 'http://localhost:3000/userResponses',
+        data: userResponsesWithRec
+      })
+  
+      console.log(response.data)
+      setUserResponsesForm({})
+    }
+
+  }
+
   const ModalContent = ({ image, course, link }) => {
+    setRecCourse(course)
     return (
       <div className="modalcourse">
         <div className="modal-content">
@@ -35,6 +69,7 @@ export default function Questions() {
           </span>
           <h2>We think the best course to sign up for would be {course}</h2>
           <img src={image} alt={course} className="courseImg" />
+          <button onClick={submitResponses}>Submit form</button>
           <p>
             Check our course{" "}
             <a href={link} className="link" target="_blank" rel="noreferrer">
