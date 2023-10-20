@@ -8,6 +8,10 @@ export default function Questions2() {
         name: '',
         email: '',
         question1: false,
+        question2: false,
+        question3: false,
+        question4: false,
+        question5: false,
       });
     
       const handleChange = (e) => {
@@ -25,54 +29,200 @@ export default function Questions2() {
       };
     
       return (
-        <div className="max-w-md mx-auto mt-8 p-4 bg-white rounded shadow">
-          <h2 className="text-2xl font-semibold mb-4">Form</h2>
+        <div className="modal">
+          <h1 className="header">Welcome</h1>
+          <h2>
+            Tell us about yourself!
+          </h2>
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="border rounded w-full py-2 px-3"
-                required
-              />
-            </div>
-    
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="border rounded w-full py-2 px-3"
-                required
-              />
-            </div>
-    
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Question 1:</label>
-              <div>
+            <div className="questions">
+              <div className="question1">
+                <li>Name:</li>
                 <input
-                  type="checkbox"
-                  id="question1"
-                  name="question1"
-                  checked={formData.question1}
+                  type="text"
+                  id="name"
+                  name="name"
+                  // value={formData.name}
                   onChange={handleChange}
-                  className="mr-2"
+                  className="border rounded w-full py-2 px-3"
+                  required
                 />
-                <label htmlFor="question1" className="text-gray-700">Yes</label>
+                {/* <span className="range-slider-value">{value1}</span> */}
               </div>
+              <hr />
+              <div className="question2">
+                <li>Email:</li>
+                <input
+                  type="text"
+                  id="email"
+                  name='email'
+                  onChange={handleChange}
+                  className="border rounded w-full py-2 px-3"
+                  required
+                  // value={value2}
+                  // onChange={(e) => {
+                  //   setValue2(e.target.value);
+                  // }}
+                ></input>
+                {/* <span className="range-slider-value">{value2}</span> */}
+              </div>
+              <hr />
+              <div className="question3">
+                <li>
+                  Are you 18 years or older?
+                </li>
+                <input
+                    type="radio"
+                    id="question1True"
+                    name="question1"
+                    value='true'
+                    checked={formData.question1 === 'true'}
+                    onChange={handleChange}
+                    className="mr-2"
+                  />
+                  <label htmlFor="question1True" className="text-gray-700">True</label>
+
+                <input
+                  type="radio"
+                  id="question1False"
+                  name="question1"
+                  value='false'
+                  checked={formData.question1 === 'false'}
+                  onChange={handleChange}
+                  className="ml-4 mr-2"
+                />
+                <label htmlFor="question1False" className="text-gray-700">False</label>
+                {/* <span className="range-slider-value">{value3}</span> */}
+              </div>
+              <hr />
+
+              <div className="question4">
+                <li>
+                  Do you have a High School diploma/equivalent or higher?
+                </li>
+                <input
+                    type="radio"
+                    id="question2True"
+                    name="question2"
+                    value="true"
+                    checked={formData.question2 === 'true'}
+                    onChange={handleChange}
+                    className="mr-2"
+                  />
+                  <label htmlFor="question2True" className="text-gray-700">True</label>
+
+                <input
+                  type="radio"
+                  id="question2False"
+                  name="question2"
+                  value="false"
+                  checked={formData.question2 === 'false'}
+                  onChange={handleChange}
+                  className="ml-4 mr-2"
+                />
+                <label htmlFor="question2False" className="text-gray-700">False</label>
+                {/* <span className="range-slider-value">{value3}</span> */}
+              </div>
+              <hr />
+
+              <div className="question5">
+                <li>
+                Are you authorized to work in the U.S.?
+                </li>
+                <input
+                    type="radio"
+                    id="question3True"
+                    name="question3"
+                    value="true"
+                    checked={formData.question3 === 'true'}
+                    onChange={handleChange}
+                    className="mr-2"
+                  />
+                  <label htmlFor="question3True" className="text-gray-700">True</label>
+
+                <input
+                  type="radio"
+                  id="question3False"
+                  name="question3"
+                  value="false"
+                  checked={formData.question3 === 'false'}
+                  onChange={handleChange}
+                  className="ml-4 mr-2"
+                />
+                <label htmlFor="question3False" className="text-gray-700">False</label>
+                {/* <span className="range-slider-value">{value3}</span> */}
+              </div>
+              <hr />
+
+              <div className="question7">
+                <li>
+                Do you have a passion for technology?
+                </li>
+                <input
+                    type="radio"
+                    id="question4True"
+                    name="question4"
+                    value="true"
+                    checked={formData.question4 === 'true'}
+                    onChange={handleChange}
+                    className="mr-2"
+                  />
+                  <label htmlFor="question4True" className="text-gray-700">True</label>
+
+                <input
+                  type="radio"
+                  id="question4False"
+                  name="question4"
+                  value="false"
+                  checked={formData.question4 === 'false'}
+                  onChange={handleChange}
+                  className="ml-4 mr-2"
+                />
+                <label htmlFor="question4False" className="text-gray-700">False</label>
+                {/* <span className="range-slider-value">{value3}</span> */}
+              </div>
+              <hr />
+
+              <div className="question6">
+                <li>
+	                Can you commit to full-time training (typically Monday-Friday 9am-4pm, 40 hours per week) plus study time (an additional 20+ hours per week)?
+                </li>
+                <input
+                    type="radio"
+                    id="question5True"
+                    name="question5"
+                    value="true"
+                    checked={formData.question5 === 'true'}
+                    onChange={handleChange}
+                    className="mr-2"
+                  />
+                  <label htmlFor="question5True" className="text-gray-700">True</label>
+
+                <input
+                  type="radio"
+                  id="question5False"
+                  name="question5"
+                  value="false"
+                  checked={formData.question5 === 'false'}
+                  onChange={handleChange}
+                  className="ml-4 mr-2"
+                />
+                <label htmlFor="question5False" className="text-gray-700">False</label>
+                {/* <span className="range-slider-value">{value3}</span> */}
+              </div>
+              <hr />
+              
+              <input
+                type="submit"
+                value="Submit"
+                className="questionsubmit"
+                // handlesubmit={() => {
+                //   // console.log(sumVal);
+                // }}
+              />
             </div>
-    
-            <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-              Submit
-            </button>
           </form>
+
         </div>
       );
     

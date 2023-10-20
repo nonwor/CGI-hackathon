@@ -3,6 +3,7 @@ import Square from './Square'
 
 // Load quiz
 import Questions from '../Questions/Questions'
+import Questions2 from '../Questions2/Questions2'
 
 class Grid extends React.Component {
 
@@ -34,17 +35,17 @@ class Grid extends React.Component {
   }
 
   handleKeyPress = (e) => {
-    switch (e.which) {
-      case 87:
+    switch (e.key) {
+      case "ArrowUp":
         this.move(0, 1);
         break;
-      case 68:
+      case 'ArrowRight':
         this.move(1, 1);
         break;
-      case 83:
+      case 'ArrowDown':
         this.move(0, -1);
         break;
-      case 65:
+      case 'ArrowLeft':
         this.move(1, -1);
         break;
     }
@@ -93,6 +94,15 @@ class Grid extends React.Component {
   render() {
 
     if(this.state.firstModal_show == true){
+      console.log("Render Modal")
+      return (
+        <div>
+          <Questions2/>
+        </div>
+      )
+    }
+
+    if(this.state.secondModal_show == true){
       console.log("Render Modal")
       return (
         <div>
