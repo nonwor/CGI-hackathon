@@ -53,3 +53,9 @@ li {
   left: 50%;
   transform: translate(-50%, 50%);
 }
+
+.modalCourse {
+  background-color: red;
+  z-index: 99;
+  position: absolute;
+}

@@ -1,8 +1,8 @@
 import React from "react";
-import "./Modal.css";
+import "./Questions.css";
 import { useState } from "react";
 
-export default function Modal() {
+export default function Questions() {
   const [value1, setValue1] = useState(5); // IT
   const [value2, setValue2] = useState(5); // CYBER
   const [value3, setValue3] = useState(5); // DATA
@@ -12,6 +12,30 @@ export default function Modal() {
   const [value7, setValue7] = useState(5); // SWE
   const [value8, setValue8] = useState(5); // DATA
 
+  let [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const ModalContent = (image, course) => {
+    return (
+      <div className="modalcourse">
+        <div className="modal-content">
+          <span className="close" onClick={closeModal}>
+            &times;
+          </span>
+          <h2>We think the best course to sign up for would be {course}</h2>
+          <img src={image} alt={course} className="courseImg" />
+        </div>
+      </div>
+    );
+  };
+
   const submitValue = (e) => {
     e.preventDefault();
     let sumIT = +value1 + +value5;
@@ -20,15 +44,19 @@ export default function Modal() {
     let sumData = +value3 + +value8;
     const biggestNum = Math.max(sumIT, sumCyber, sumSWE, sumData);
     // find the biggest number and see which course it correlates to
+
+    openModal();
+
+    console.log(showModal, biggestNum === sumIT);
     return (
       <>
-        {biggestNum === sumIT ? (
-          <div>Display IT Course</div>
-        ) : biggestNum === sumCyber ? (
+        {biggestNum === sumIT && showModal ? (
+          <ModalContent image="../assets/it.jpg" course="IT" />
+        ) : biggestNum === sumCyber && showModal ? (
           <div>Display Cyber Course</div>
-        ) : biggestNum === sumSWE ? (
+        ) : biggestNum === sumSWE && showModal ? (
           <div>Display SWE Course</div>
-        ) : biggestNum === sumData ? (
+        ) : biggestNum === sumData && showModal ? (
           <div>Display Data Course</div>
         ) : (
           <div>An error occured, please try again</div>
@@ -182,7 +210,12 @@ export default function Modal() {
             <span className="range-slider-value">{value8}</span>
           </div>
           <hr />
-          <input type="submit" value="Submit" className="questionsubmit" />
+          <input
+            type="submit"
+            value="Submit"
+            className="questionsubmit"
+            onClick={openModal}
+          />
         </div>
       </form>
     </div>
