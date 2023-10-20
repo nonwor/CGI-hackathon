@@ -23,6 +23,7 @@ router.get('/', verifyAdmin, async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     // const { assessments } = req.body;
+    console.log(req.body)
     const savedResponse = await UserResponse.create({ ...req.body });
     
     res.status(201).json(savedResponse);
