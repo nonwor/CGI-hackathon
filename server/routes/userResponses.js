@@ -1,53 +1,31 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const UserResponse = require("../models/userResponses");
+const UserResponse = require('../models/userResponses');
 
-// Create a new user response
-router.post("/", async (req, res) => {
+// Get all user responses with optional limit
+router.get('/', async (req, res) => {
   try {
-    const { user, assessments } = req.body;
+    const limit = parseInt(req.query.limit) || 10;
 
-    const userResponse = new UserResponse({ user, assessments });
-    const savedResponse = await userResponse.save();
-
-    res.status(201).json(savedResponse);
-  } catch (error) {
-    res.status(400).json({ error: "Failed to create user response." });
-  }
-});
-
-// Get a user's responses by user ID
-router.get("/:userId", async (req, res) => {
-  try {
-    const userId = req.params.userId;
-    const userResponses = await UserResponse.find({ user: userId });
+    const userResponses = await UserResponse.find({}).limit(limit);
 
     res.json(userResponses);
   } catch (error) {
-    res.status(500).json({ error: "Failed to retrieve user responses." });
+    res.status(500).json({ error: 'Failed to retrieve user responses.' });
   }
 });
 
-// Update a user's responses by user ID
-router.put("/:userId", async (req, res) => {
+// Create a new user response
+router.post('/', async (req, res) => {
   try {
-    const userId = req.params.userId;
     const { assessments } = req.body;
-
-    const updatedResponse = await UserResponse.findOneAndUpdate(
-      { user: userId },
-      { assessments },
-      { new: true }
-    );
-
-    if (!updatedResponse) {
-      return res.status(404).json({ error: "User response not found." });
-    }
-
-    res.json(updatedResponse);
+    const savedResponse = await UserResponse.create({ assessments });
+    
+    res.status(201).json(savedResponse);
   } catch (error) {
-    res.status(500).json({ error: "Failed to update user response." });
+    res.status(400).json({ error: 'Failed to create user response document.' });
   }
 });
+
 
 module.exports = router;

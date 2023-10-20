@@ -2,27 +2,40 @@ const mongoose = require("mongoose");
 
 // Define a UserResponse schema
 const userResponseSchema = new mongoose.Schema({
-  // user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, 
   assessments: {
     eligibilityQuestionaire: {
-      type: Object,
-      default: {},
+      type: [
+        {
+          question: { type: String },
+          answer: { type: Boolean },
+        }
+      ],
+      default: [],
     },
     userInfo: {
-      type: Object,
-      default: {},
+      type: [
+        {
+          question: { type: String },
+          answer: { type: String },
+        }
+      ],
+      default: [],
     },
     behavioralQuestionaire: {
-      type: Object,
-      default: {},
+      type: [
+        {
+          question: { type: String },
+          answer: { type: Number },
+        }
+      ],
+      default: [],
     },
-  },
-},
-{
+  }
+}, {
   timestamps: true,
 });
 
-// Create a UserResponse model
+
 const UserResponse = mongoose.model("UserResponse", userResponseSchema);
 
 module.exports = UserResponse;
