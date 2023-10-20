@@ -113,6 +113,11 @@ class Grid extends React.Component {
 
     return (
       <div>
+        <ul style={{ padding: 0, margin: 20 }}>
+          <li>Instructions:</li>
+          <li>Use the arrow keys to navigate</li>
+          <li>Find your path to new opportunities</li>
+        </ul>
         
         <div className="grid-box"
            style={{"width": this.props.gridWidth * 150, "height": this.props.gridWidth * 150}}>
