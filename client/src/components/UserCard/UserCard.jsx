@@ -13,6 +13,7 @@ function UserCard() {
             <div className='progress-bar'>
                 100%
             </div>
+            <button>remove</button>
         </div>
     </div>
   )
