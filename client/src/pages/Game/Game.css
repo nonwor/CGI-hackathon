@@ -17,11 +17,11 @@
   .selected::before {
     position: absolute;
     content: '';
-    background-image: url('./character.png');
+    background-image: url('./student.png');
     background-repeat: no-repeat;
-    background-size: 120px 300px;
+    background-size: 180px 300px;
     background-position: 13% 0%;
-    width: 200px;
+    width: 228px;
     height: 300px;
     pointer-events: none;
     transform: rotateX(0deg) rotateY(0deg) rotateZ(135deg);
