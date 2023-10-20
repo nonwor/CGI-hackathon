@@ -10,7 +10,7 @@ app.use(cors());
 
 // Connect to DB
 const connectToDB = require("./config/db");
-connectToDB();
+// connectToDB();
 
 
 app.use("/admins", require("./routes/adminRoutes"));
@@ -22,6 +22,16 @@ app.get("*", (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`App listening on port ${PORT}`);
+// });
+
+connectToDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`App listening on port ${PORT}`);
+          });
+    })
+    .catch(() => {
+        console.log('error starting server')
+    })

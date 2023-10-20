@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 // Define a UserResponse schema
 const userResponseSchema = new mongoose.Schema({
   assessments: {
-    eligibilityQuestionaire: {
-      type: [
-        {
-          question: { type: String },
-          answer: { type: Boolean },
-        }
-      ],
-      default: [],
-    },
+    // eligibilityQuestionaire: {
+    //   type: [
+    //     {
+    //       question: { type: String },
+    //       answer: { type: Boolean },
+    //     }
+    //   ],
+    //   default: [],
+    // },
     userInfo: {
       type: [
         {

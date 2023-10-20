@@ -6,13 +6,12 @@ const Admin = require('../models/admins');
 // Register an admin user
 router.post('/register', async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { userName, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log('hashed password')
+    const newAdmin = await Admin.create({userName, password: hashedPassword})
 
-    const newAdmin = new Admin({ username, password: hashedPassword });
-    await newAdmin.save();
-
-    res.status(201).json({ message: 'Admin created successfully' });
+    res.status(201).json(newAdmin);
   } catch (error) {
     res.status(400).json({ error: 'Failed to create admin user' });
   }
@@ -22,8 +21,8 @@ router.post('/register', async (req, res) => {
 // Login an admin user
 router.post('/login', async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const admin = await Admin.findOne({ username });
+    const { userName, password } = req.body;
+    const admin = await Admin.findOne({ userName });
 
     if (!admin) {
       return res.status(401).json({ error: 'Authentication failed' });
