@@ -75,3 +75,8 @@ li {
   margin: 0 auto 0 auto;
   width: 50%;
 }
+
+p {
+  text-align: center;
+  color: white;
+}

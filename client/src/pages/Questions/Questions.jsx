@@ -25,7 +25,7 @@ export default function Questions() {
     setShowModal(false);
   };
 
-  const ModalContent = ({ image, course }) => {
+  const ModalContent = ({ image, course, link }) => {
     return (
       <div className="modalcourse">
         <div className="modal-content">
@@ -34,6 +34,12 @@ export default function Questions() {
           </span>
           <h2>We think the best course to sign up for would be {course}</h2>
           <img src={image} alt={course} className="courseImg" />
+          <p>
+            Check our course{" "}
+            <a href={link} className="link">
+              HERE
+            </a>
+          </p>
         </div>
       </div>
     );
@@ -217,18 +223,28 @@ export default function Questions() {
       </form>
 
       {biggestNum === sumVal[0] && showModal ? (
-        <ModalContent image="/src/assets/it.jpg" course="IT" />
+        <ModalContent
+          image="/src/assets/it.jpg"
+          course="IT"
+          link="https://perscholas.org/courses/it-support/it-support-atlanta/"
+        />
       ) : biggestNum === sumVal[1] && showModal ? (
-        <ModalContent image="/src/assets/csec.jpg" course="Cyber Security" />
+        <ModalContent
+          image="/src/assets/csec.jpg"
+          course="Cyber Security"
+          link="https://perscholas.org/courses/cybersecurity/cybersecurity-atlanta/"
+        />
       ) : biggestNum === sumVal[2] && showModal ? (
         <ModalContent
           image="/src/assets/swe.jpg"
           course="Software Engineering"
+          link="https://perscholas.org/courses/software-engineer/software-engineer-atlanta/"
         />
       ) : biggestNum === sumVal[3] && showModal ? (
         <ModalContent
           image="/src/assets/dataengineer.jpg"
           course="Data Engineering"
+          link="https://perscholas.org/courses/data-analytics-powered-by-cgi/tennessee/"
         />
       ) : (
         <></>
