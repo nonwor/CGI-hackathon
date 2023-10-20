@@ -20,6 +20,7 @@ router.post('/register', async (req, res) => {
 
 // Login an admin user
 router.post('/login', async (req, res) => {
+    console.log('login route hit')
   try {
     const { userName, password } = req.body;
     const admin = await Admin.findOne({ userName });
@@ -34,7 +35,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Authentication failed' });
     }
 
-    res.status(200).json({ message: 'Authentication successful' });
+    res.status(200).json(admin);
   } catch (error) {
     res.status(500).json({ error: 'Authentication failed' });
   }

@@ -22,8 +22,8 @@ router.get('/', verifyAdmin, async (req, res) => {
 // Create a new user-response
 router.post('/', async (req, res) => {
   try {
-    const { assessments } = req.body;
-    const savedResponse = await UserResponse.create({ assessments });
+    // const { assessments } = req.body;
+    const savedResponse = await UserResponse.create({ ...req.body });
     
     res.status(201).json(savedResponse);
   } catch (error) {

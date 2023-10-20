@@ -1,7 +1,7 @@
 const Admin = require('../models/admins');
 
 const verifyAdmin = async (req, res, next) => {
-    const adminId = req.headers.authorization; 
+    const adminId = req.headers.authorization.split(' ')[1]; 
 
     if (!adminId) {
         return res.status(401).json({ error: 'Unauthorized: Admin ID is missing' });
@@ -13,6 +13,7 @@ const verifyAdmin = async (req, res, next) => {
         return res.status(401).json({ error: 'Unauthorized: Admin ID not found' });
         }
 
+        console.log('admin succesfully authenticated')
         req.admin = admin;
         next(); 
 

@@ -56,8 +56,9 @@ function Admin() {
             </form>
         </div>
         <div className='user-cards'>
-            <UserCard />
-            <UserCard />
+            {userResponses.map(UserResponse => {
+                return <UserCard userResponse={UserResponse}/>
+            })}
         </div>
     </section>
   )

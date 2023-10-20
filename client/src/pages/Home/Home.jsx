@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { PrimaryContext } from "../../components/context/PrimaryContext";
+import { useNavigate } from 'react-router-dom';
+import Admin from "../Admin/Admin";
 import axios from 'axios';
 
 import "./Home.css"
+import path from "path";
 
 function Home() {
-
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     userName: "",
     password: ""
@@ -14,21 +17,23 @@ function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(adminCredentials);
+    console.log(formData);
     
     const adminUser = await axios({
       method: 'POST',
       url: 'http://localhost:3000/admins/login',
-      data: adminCredentials
+      data: formData
     })
-
+    console.log(adminUser.data)
     setAdminCredentials(adminUser.data)    
+    setIsAdmin(true)
+    navigate('/Admin')
   }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData({
-      ...adminCredentials,
+      ...formData,
       [name]: value,
     });
   };
@@ -45,9 +50,9 @@ function Home() {
             <label>Login</label>
             <input 
               onChange={handleInputChange} 
-              type="email" 
-              name="email" 
-              placeholder="email"
+              type="userName" 
+              name="userName" 
+              placeholder="userName"
             />
             <input 
               onChange={handleInputChange} 
