@@ -3,3 +3,95 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Game css */
+.square {
+  box-sizing: border-box;
+  width: 150px;
+  height: 150px;
+  display: block;
+  float: left;
+  margin: 0;
+}
+
+.selected {
+  border: solid 5px #FFF;
+  box-shadow: inset 0 0 0 1000px rgba(255,255,255,.3);
+  
+}
+
+.selected::before {
+  position: absolute;
+  content: '';
+  background-image: url('./pages/Game/character.png');
+  background-repeat: no-repeat;
+  background-size: 120px 300px;
+  background-position: 13% 0%;
+  width: 200px;
+  height: 300px;
+  pointer-events: none;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(135deg);
+  z-index: 2;
+}
+
+.grid-box {
+  position: relative;
+  margin: 40px auto 0;
+  transform: rotateX(60deg) rotateY(0deg) rotateZ(-135deg);
+}
+
+.grid-box:focus {
+  outline: none;
+}
+
+.red {
+  background-color: #ba1446;
+}
+
+.blue {
+  background-color: #1f1f91;
+}
+
+.purple {
+  background-color: #6b1087;
+}
+
+.green {
+  background-color: #237031;
+}
+
+.yellow {
+  background-color: #d39e17;
+}
+
+/* This is the image for the collision */
+
+#pen {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 150px; left: 600px;
+  border-radius: 13px;
+}
+
+#eval {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 150px; left: 600px;
+  border-radius: 13px;
+}
+
+.overlay {
+  position: relative;
+}
+
+.overlay-image {
+  position: absolute;
+  width: 20%;
+  height: 30%;
+  /* opacity: ; Adjust the opacity as needed */
+  transform: rotateX(200deg) rotateY(-20deg) rotateZ(50deg);
+  border-radius: 13px;
+  z-index: 1;
+}
