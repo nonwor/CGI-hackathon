@@ -12,6 +12,7 @@ export default function Questions() {
   const [value7, setValue7] = useState(5); // SWE
   const [value8, setValue8] = useState(5); // DATA
   const [sumVal, setSumVal] = useState([0, 0, 0, 0]);
+  const [disabled, setDisabled] = useState(false);
 
   let [showModal, setShowModal] = useState(false);
 
@@ -36,7 +37,7 @@ export default function Questions() {
           <img src={image} alt={course} className="courseImg" />
           <p>
             Check our course{" "}
-            <a href={link} className="link">
+            <a href={link} className="link" target="_blank" rel="noreferrer">
               HERE
             </a>
           </p>
@@ -60,6 +61,8 @@ export default function Questions() {
     // IT, CYBER, SWE, DATA
 
     updateSumVal();
+
+    setDisabled(true);
 
     // find the biggest number and see which course it correlates to
 
@@ -215,9 +218,7 @@ export default function Questions() {
             type="submit"
             value="Submit"
             className="questionsubmit"
-            onClick={() => {
-              console.log(sumVal);
-            }}
+            disabled={disabled}
           />
         </div>
       </form>
