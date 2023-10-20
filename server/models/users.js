@@ -13,10 +13,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       match: /.+@.+\.\w+/,
     },
-    morethan18: { type: Boolean, required: true },
-    highschool: { type: Boolean, required: true },
-    commitment: { type: Boolean, required: true },
-    contactedBy: { type: Schema.Types.ObjectId, default: false, ref: "Admin" },
+    contactedBy: { type: Schema.Types.ObjectId, default: null, ref: "Admin" },
   },
   {
     timestamps: true,
