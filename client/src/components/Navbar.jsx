@@ -1,13 +1,12 @@
 import React from "react";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
     <div className="nav-bar">
-        <a href="">home</a>
-        <a href="">register</a>
-        <a href="">login</a>
-        <a href="">admin</a>
+      <Link to="/Home">Home</Link>
+      <Link to="/Admin">Admin</Link>
     </div>
   );
 }
