@@ -1,6 +1,6 @@
 # CGI_hackathon
 
-With major contributions from: 
+With major contributions from: <br /> 
 Stanley Louie (NYC) 
 https://www.linkedin.com/in/stanley-louie-523136127/
 
